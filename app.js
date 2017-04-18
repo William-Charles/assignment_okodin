@@ -18,6 +18,11 @@ app.use(
     keys: ["asdf1234567890qwer"]
   })
 );
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  res.locals.currentUser = req.session.currentUser;
+  next();
+});
 
 // ----------------------------------------
 // Flash Messages

@@ -8,7 +8,7 @@ module.exports = app => {
     var reqUrl = url.parse(req.url);
     if (
       !req.session.currentUser &&
-      !["/", "/login", "/sessions"].includes(reqUrl.pathname)
+      !["/", "/login", "/sessions", "/signup"].includes(reqUrl.pathname)
     ) {
       res.redirect("/login");
     } else {
@@ -26,6 +26,14 @@ module.exports = app => {
   };
   router.get("/", onNew);
   router.get("/login", onNew);
+
+  router.get("/signup", (req, res) => {
+    if (req.session.currentUser) {
+      res.redirect("/users");
+    } else {
+      res.render("sessions/signup");
+    }    
+  })
 
   // Create
   router.post("/sessions", (req, res) => {
@@ -48,6 +56,9 @@ module.exports = app => {
     // })
     // .catch((e) => res.status(500).send(e.stack));
   });
+
+  // New account
+  router.post("/sessions/signup")
 
   // Destroy
   var onDestroy = (req, res) => {

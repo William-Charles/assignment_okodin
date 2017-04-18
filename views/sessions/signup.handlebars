@@ -1,0 +1,27 @@
+
+<header class="page-header">
+  <h1>Sign Up</h1>
+</header>
+
+<form action="/sessions/signup" method="post">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" name="username">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" name="email">      
+  </div>
+  <div class="form-group">
+  	<label for="optradio">Gender</label><br>
+		<label class="radio-inline"><input type="radio" name="optradio" value="male">Male</label>
+		<label class="radio-inline"><input type="radio" name="optradio" value="female">Female</label>
+	</div>
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary">
+  </div>
+  <br>
+  <p>Already have an account?</p>
+  <a class="btn btn-primary" href="/" role="button">Login</a>
+
+</form>
