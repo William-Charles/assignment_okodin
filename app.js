@@ -71,8 +71,11 @@ app.use((req, res, next) => {
 // ----------------------------------------
 // Routes
 // ----------------------------------------
-// var jobApplicationsRouter = require('./routers/job_applications');
-// app.use('/', jobApplicationsRouter);
+var sessionsRouter = require('./routers/sessions')(app);
+app.use('/', sessionsRouter);
+
+var usersRouter = require('./routers/users');
+app.use('/users', usersRouter);
 
 // ----------------------------------------
 // Template Engine
