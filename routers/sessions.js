@@ -102,7 +102,6 @@ module.exports = app => {
 
             // Add userId to associated models
             profileParams.user_id = user.id;
-            console.log(profileParams);
 
             // Find or create user profile
             return Profile.findOrCreate({
@@ -131,8 +130,7 @@ module.exports = app => {
             );
           })
           .then(() => {
-            // Set address profileId
-            locationParams.profile_id = profile.id;
+            // Set address profile
 
             // Find or create address
             return Location.findOrCreate({

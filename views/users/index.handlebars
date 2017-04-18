@@ -12,6 +12,7 @@
         <th>Last Name</th>
         <th>Username</th>
         <th>Email</th>
+        <th>distance</th>
         <th>Gender</th>
         <th></th>
         <th></th>
@@ -31,6 +32,9 @@
         </td>
         <td>
           <a href="/users/{{ user.Profile.id }}">{{ user.email }}</a>
+        </td>
+        <td>
+          <a href="/users/{{ user.Profile.id }}">{{ user.Profile.Location.distance }}</a>
         </td>
         <td>
           <a href="/users/{{ user.Profile.id }}">{{ user.Profile.gender }}</a>

@@ -13,7 +13,11 @@ var onIndex = (req, res) => {
     include: [
       {
         all: true,
-        include: [{ all: true }]
+        include: [
+          {
+            model: Location
+          }
+        ]
       }
     ]
   })

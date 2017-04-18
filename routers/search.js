@@ -15,9 +15,10 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   req.session.currentUser.email;
-  let dis = req.body.distance;
+  let dis = Number(req.body.distance);
   let low = dis - 10;
   let high = dis + 10;
+
   User.findAll({
     include: [
       {
@@ -26,7 +27,7 @@ router.post("/", (req, res) => {
           {
             model: Location,
             where: {
-              distance: { lt: high, gt: low }
+              distance: { $lt: high, $gt: low }
             }
           }
         ]
@@ -34,7 +35,8 @@ router.post("/", (req, res) => {
     ]
   })
     .then(users => {
-      console.log(users);
+      console;
+      users.searchQ = dis;
       res.render("search/results", { users });
     })
     .catch(e => res.status(500).send(e.stack));
