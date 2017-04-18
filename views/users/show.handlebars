@@ -1,0 +1,15 @@
+
+<header class="page-header">
+  <h1>User: {{ profile.User.lname }}, {{ profile.User.fname }}</h1>
+  <a href="/users/{{ User.id }}/edit" class="btn btn-primary">Edit</a>
+  <a href="/users/{{ User.id }}?_method=delete" class="btn btn-danger">Delete</a>
+</header>
+
+<p>First Name: {{ profile.User.fname }}</p>
+<p>Last Name: {{ profile.User.lname }}</p>
+<p>Username: {{ profile.User.username }}</p>
+<p>Email: {{ profile.User.email }}</p>
+<p>City: {{ profile.Location.city }}</p>
+<p>Distance: {{ profile.Location.distance }}</p>
+<p>Username: {{ profile.gender }}</p>
+<p>Email: {{ profile.age }}</p>

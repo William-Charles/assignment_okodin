@@ -3,13 +3,22 @@ var router = express.Router();
 var models = require("./../models");
 var User = models.User;
 var sequelize = models.sequelize;
+var { User, Profile, Location } = models;
 
 // ----------------------------------------
 // Index
 // ----------------------------------------
 var onIndex = (req, res) => {
-  User.findAll()
+  User.findAll({
+    include: [
+      {
+        all: true,
+        include: [{ all: true }]
+      }
+    ]
+  })
     .then(users => {
+      console.log(users);
       res.render("users/index", { users });
     })
     .catch(e => res.status(500).send(e.stack));
@@ -39,20 +48,27 @@ router.get("/users", onIndex);
 //     .catch(e => res.status(500).send(e.stack));
 // });
 //
-// // ----------------------------------------
-// // Show
-// // ----------------------------------------
-// router.get("/users/:id", (req, res) => {
-//   User.findById(req.params.id)
-//     .then(user => {
-//       if (user) {
-//         res.render("users/show", { user });
-//       } else {
-//         res.send(404);
-//       }
-//     })
-//     .catch(e => res.status(500).send(e.stack));
-// });
+// ----------------------------------------
+// Show
+// ----------------------------------------
+router.get("/:id", (req, res) => {
+  Profile.findById(req.params.id, {
+    include: [
+      {
+        all: true,
+        include: [{ all: true }]
+      }
+    ]
+  })
+    .then(profile => {
+      if (profile) {
+        res.render("users/show", { profile });
+      } else {
+        res.send(404);
+      }
+    })
+    .catch(e => res.status(500).send(e.stack));
+});
 //
 // // ----------------------------------------
 // // Create

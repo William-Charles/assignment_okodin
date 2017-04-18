@@ -21,25 +21,25 @@
       {{#each users as |user| }}
       <tr>
         <td>
-          <a href="/users/{{ user.id }}">{{ user.fname }}</a>
+          <a href="/users/{{ user.Profile.id }}">{{ user.fname }}</a>
         </td>
         <td>
-          <a href="/users/{{ user.id }}">{{ user.lname }}</a>
+          <a href="/users/{{ user.Profile.id }}">{{ user.lname }}</a>
         </td>
         <td>
-          <a href="/users/{{ user.id }}">{{ user.username }}</a>
+          <a href="/users/{{ user.Profile.id }}">{{ user.username }}</a>
         </td>
         <td>
-          <a href="/users/{{ user.id }}">{{ user.email }}</a>
+          <a href="/users/{{ user.Profile.id }}">{{ user.email }}</a>
         </td>
         <td>
-          <a href="/users/{{ user.id }}">{{ user.gender }}</a>
+          <a href="/users/{{ user.Profile.id }}">{{ user.Profile.gender }}</a>
         </td>
         <td>
-          <a href="/users/{{ user.id }}/edit">Edit</a>
+          <a href="/users/{{ user.Profile.id }}/edit">Edit</a>
         </td>
         <td>
-          <a href="/users/{{ user.id }}?_method=delete" class="text-danger">Delete</a>
+          <a href="/users/{{ user.Profile.id }}?_method=delete" class="text-danger">Delete</a>
         </td>
       </tr>
       {{/each }}
