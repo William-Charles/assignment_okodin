@@ -32,8 +32,8 @@ module.exports = app => {
       res.redirect("/users");
     } else {
       res.render("sessions/signup");
-    }    
-  })
+    }
+  });
 
   // Create
   router.post("/sessions", (req, res) => {
@@ -58,7 +58,13 @@ module.exports = app => {
   });
 
   // New account
-  router.post("/sessions/signup")
+  router.post("/sessions/signup", (req, res) => {
+    var userParams = {
+      fname: req.body.user.fname,
+      lname: req.body.user.lname,
+      email: req.body.user.email
+    };
+  });
 
   // Destroy
   var onDestroy = (req, res) => {
